@@ -5,6 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Portfolio</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-color: #e4d9d9;
+      --secondary-color: #f0e1e1;
+      --background-color: #162145;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--secondary-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        src: url('fonts/Inter-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+
+    nav ul, nav ul li, nav ul li a {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    section {
+      padding: 40px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter';
+    }
+
+    h1 {
+      color: var(--primary-color);
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .project {
+      margin-bottom: 40px;
+    }
+
+    .project img {
+      filter: invert(1);
+      width: 80px;
+      height: auto;
+    }
+
+    .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 9999;
+    }
+
+    .cursor-glow {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* Adjust the glow effect here */
+    }
+
+
+    form input, form textarea, form button {
+      display: block;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    footer {
+      background-color: var(--secondary-color);
+      color: var(--background-color);
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,10 +127,13 @@
       </ul>
     </nav>
   </header>
+  <div class="cursor">
+  <script src="script.js"></script>
+  </div>
 
   <section id="home">
     <h1>Your Name</h1>
-    <h2>Front-End Developer</h2>
+    <h2>Full-Stack Developer</h2>
   </section>
 
   <section id="about">
@@ -31,30 +144,11 @@
   <section id="projects">
     <h2>Projects</h2>
     <div class="project">
-      <img src="project1.jpg" alt="Project 1">
-      <h3>Project 1</h3>
+      <img src="chefbotlogo.png" alt="Project 1">
+      <h3>ChefBot</h3>
       <p>Description of Project 1</p>
     </div>
-    <div class="project">
-      <img src="project2.jpg" alt="Project 2">
-      <h3>Project 2</h3>
-      <p>Description of Project 2</p>
-    </div>
-    <!-- Add more project divs as needed -->
   </section>
 
   <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2023 Your Name. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <h2>Contact Me
