@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Portfolio</title>
+  <title>Portfolio</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     :root {
@@ -20,11 +20,19 @@
     }
 
     @font-face {
-        font-family: 'Inter';
-        src: url('fonts/Inter-Regular.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        }
+      font-family: 'Inter';
+      src: url('fonts/Inter-Regular.ttf') format('truetype');
+      font-style: normal;
+    }
+
+    nav {
+        position: fixed;
+        margin-top: -300px;
+        margin-left: 150px;
+        width: 100%;
+        padding: 20px;
+        z-index: 1;
+    }
 
     nav ul {
       list-style-type: none;
@@ -33,24 +41,97 @@
     }
 
     nav ul li {
-      display: inline;
-      margin-right: 20px;
+      display: block;
+      margin-bottom: 10px;
     }
 
     nav ul li a {
       text-decoration: none;
       color: var(--secondary-color);
+      position: relative; 
     }
 
-    nav ul, nav ul li, nav ul li a {
-        margin-left: 10px;
-        margin-top: 10px;
-    }
-    section {
-      padding: 40px;
+    nav ul,
+    nav ul li,
+    nav ul li a {
+      margin-left: 40px;
+      margin-top: 60px;
     }
 
-    h1, h2, h3 {
+    nav ul li a:before {
+        content:"";
+        position: absolute;
+        top: calc(50% - 1px);
+        left: -40px;
+        width: 30px;
+        height: 2px; /* Adjust the height of the bar */
+        background-color: var(--primary-color);
+        color: gray;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    nav ul li a:hover:before {
+        color: #fff;
+        opacity: 1; /* Show the bar on hover */
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }   
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 300px;
+        margin-top: 200px;
+    }
+
+    .main-content {
+        position: fixed;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: -600px;
+        margin-top: 530px;
+    }
+
+    .main-content h2 {
+      font-weight: lighter;
+      font-size: 20px;
+    }
+
+    .main-content p {
+      font-size: 16px;
+    }
+
+    .sidebar h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .sidebar .project {
+      margin-bottom: 40px;
+    }
+
+    .sidebar .contact {
+      padding-bottom: 20px;
+    }
+
+    .linkedin img {
+      filter: grayscale(100%) invert(1);
+      width: 80px;
+      height: auto;
+    }
+
+    h1,
+    h2,
+    h3 {
       margin: 0;
       padding: 0;
       font-family: 'Inter';
@@ -83,34 +164,54 @@
       height: auto;
     }
 
+    .project a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .contact-icons {
+      display: flex;
+    }
+
+    .contact-icons a {
+      margin: 0 10px; /* Add spacing between the logos */
+    }
+
+    .contact-icons img {
+      filter: brightness(0) invert(80%);
+      width: 30px;
+      height: 28px;
+    }
+    
+    .tab {
+        transition: font-size 0.3s ease;
+    }
+
+    .sidebar-content {
+        transition: font-size 0.3s ease;
+    }
+
     .cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #fff;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+      z-index: 9999;
     }
 
     .cursor-glow {
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* Adjust the glow effect here */
-    }
-
-
-    form input, form textarea, form button {
-      display: block;
-      margin-bottom: 20px;
-      width: 100%;
+      box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
     }
 
     footer {
       background-color: var(--secondary-color);
-      color: var(--background-color);
+      color: var(--primary-color);
       padding: 20px;
       text-align: center;
     }
@@ -118,37 +219,65 @@
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="cursor">
-  <script src="script.js"></script>
-  </div>
-
-  <section id="home">
-    <h1>Jenny Zhang</h1>
-    <h2>Full-Stack Developer</h2>
-  </section>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Your bio and description go here.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <img src="chefbotlogo.png" alt="Project 1">
-      <h3>ChefBot</h3>
-      <p>Description of Project 1</p>
+    <div class="container">
+      <div class="main-content">
+        <section id="home">
+          <h1>Jenny Zhang</h1>
+          <h2>Full-Stack Developer</h2>
+          <p>Designing, building, and maintaining user-friendly web applications.</p>
+        </section>
+      </div>
     </div>
-  </section>
+  </header>
+  <div class="container">
+    <div class="sidebar">
+      <section id="about">
+        <h2>About Me</h2>
+        <p>Your bio and description go here.</p>
+      </section>
 
-  <section id="contact">
-    <h2>Contact Me
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+          <a href="http://www.chefbot.org/" target="_blank">
+            <img src="chefbotlogo.png">
+            <h3>ChefBot</h3>
+            <p>Description of Project 1</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-icons">
+          <a href="https://www.linkedin.com/in/jennyzhang123/" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://github.com/jxnnyzhang" target="_blank">
+            <img src="github-mark.png" alt="GitHub">
+          </a>
+        </div>
+      </section>
+    </div>
+  <nav>
+    <ul>
+      <li><a href="#about" class = "tab"> About</a></li>
+      <li><a href="#projects" class = "tab"> Projects</a></li>
+      <li><a href="#contact" class = "tab"> Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <script src="scroll.js"></script>
+    <div id="about" class="sidebar-content">
+      <!-- About sidebar content -->
+    </div>
+    <div id="projects" class="sidebar-content">
+      <!-- Projects sidebar content -->
+    </div>
+    <div id="contact" class="sidebar-content">
+      <!-- Contact sidebar content -->
+    </div>
+  <div class="cursor"></div>
+  <script src="script.js"></script>
+</body>
+</html>
