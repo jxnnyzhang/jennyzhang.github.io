@@ -1,21 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var cursor = document.querySelector(".cursor");
+document.addEventListener('mousemove', function(e) {
+    var cursor = document.querySelector('.cursor');
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
   
-    document.addEventListener("mousemove", function(e) {
-      var x = e.clientX;
-      var y = e.clientY;
+  document.addEventListener('mouseenter', function() {
+    var cursor = document.querySelector('.cursor');
+    cursor.classList.add('active');
+  });
   
-      cursor.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-    });
-  
-    document.addEventListener("mouseenter", function() {
-      cursor.style.opacity = "1";
-      cursor.classList.add("cursor-glow");
-    });
-  
-    document.addEventListener("mouseleave", function() {
-      cursor.style.opacity = "0";
-      cursor.classList.remove("cursor-glow");
-    });
+  document.addEventListener('mouseleave', function() {
+    var cursor = document.querySelector('.cursor');
+    cursor.classList.remove('active');
   });
   
