@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     :root {
-      --primary-color: #e4d9d9;
-      --secondary-color: #f0e1e1;
-      --background-color: #162145;
+      --primary-color: #dadce3;
+      --secondary-color: #e6f1ff;
+      --background-color: #0a192f;
     }
 
     body {
@@ -17,6 +17,7 @@
       color: var(--secondary-color);
       margin: 0;
       padding: 0;
+      overflow: hidden;
     }
 
     @font-face {
@@ -27,10 +28,9 @@
 
     nav {
         position: fixed;
-        margin-top: -300px;
-        margin-left: 150px;
+        top: 200px;
+        left: 50px;
         width: 100%;
-        padding: 20px;
         z-index: 1;
     }
 
@@ -43,18 +43,20 @@
     nav ul li {
       display: block;
       margin-bottom: 10px;
+      font-size: 14px;
     }
 
     nav ul li a {
       text-decoration: none;
       color: var(--secondary-color);
       position: relative; 
+      transition: font-size 0.3s ease, transform 0.3s ease;
     }
 
     nav ul,
     nav ul li,
     nav ul li a {
-      margin-left: 40px;
+      margin-left: 30px;
       margin-top: 60px;
     }
 
@@ -66,13 +68,15 @@
         width: 30px;
         height: 2px; /* Adjust the height of the bar */
         background-color: var(--primary-color);
-        color: gray;
-        opacity: 1;
+        color: white;
+        opacity: 0.5;
         transition: opacity 0.3s ease-in-out;
     }
 
     nav ul li a:hover:before {
         color: #fff;
+        width: 50px;
+        left: -60px;
         opacity: 1; /* Show the bar on hover */
     }
 
@@ -80,39 +84,66 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 20px;
     }   
 
     .sidebar {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-left: 300px;
-        margin-top: 200px;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: left;
+        margin-right: -750px;
+        margin-top: -150px;
+        z-index: 2;
     }
 
     .main-content {
-        position: fixed;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-left: -600px;
-        margin-top: 530px;
+        margin-left: -800px;
+        margin-top: 100px;
+    }
+
+    #contact {
+    position: fixed;
+    bottom: 0;
+    margin-top: auto;
+    }
+
+    .main-content h1 {
+        color: white;
     }
 
     .main-content h2 {
       font-weight: lighter;
       font-size: 20px;
+      color: white;
     }
 
     .main-content p {
       font-size: 16px;
+      color: #bab3b3;
     }
 
     .sidebar h2 {
       color: var(--primary-color);
       margin-bottom: 20px;
+    }
+    
+    #about {
+        max-width: 500px;
+        margin: 0 auto;
+        color: #e6f1ff;
+    }
+
+    #projects {
+        max-width: 500px;
+        margin: 0 auto;
+        color: rgb(210, 199, 199);
     }
 
     .sidebar .project {
@@ -127,6 +158,37 @@
       filter: grayscale(100%) invert(1);
       width: 80px;
       height: auto;
+    }
+
+    .project-box img{
+        filter: invert(1);
+        width: 80px;
+        height: auto;
+    }
+
+    .project-box {
+        color: var(--primary-color);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 20px;
+        padding: 5px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .project-box:hover {
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(157, 159, 172, 0.2);
+        transform:translateX(3px); /* Add this line */
+    }
+
+    .project-box a {
+        text-decoration: none;
+        color: inherit;
+        pointer-events: auto;
+    }
+
+    .project-box:hover a {
+    color: inherit;
     }
 
     h1,
@@ -154,21 +216,6 @@
       margin-bottom: 20px;
     }
 
-    .project {
-      margin-bottom: 40px;
-    }
-
-    .project img {
-      filter: invert(1);
-      width: 80px;
-      height: auto;
-    }
-
-    .project a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-
     .contact-icons {
       display: flex;
     }
@@ -182,32 +229,36 @@
       width: 30px;
       height: 28px;
     }
-    
+
+    .read-more-link {
+        font-weight: bold;
+    }
+
     .tab {
-        transition: font-size 0.3s ease;
+        transition: font-size 0.3s ease, transform 0.3s ease;
     }
 
     .sidebar-content {
-        transition: font-size 0.3s ease;
+        transition: font-size 0.3s ease, transform 0.3s ease;
     }
-
+       
     .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #fff;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease-out;
-      z-index: 9999;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 550px;
+    height: 550px;
+    background: rgb(243, 243, 240);
+    background: radial-gradient(circle, rgb(159, 171, 183) 0%,  #e9eaed00 70%);
+    background-size: 100%;
+    border-radius: 100%;
+    position: absolute;
+	background-repeat: no-repeat;
+	background-position: center;
+    position: absolute;
+    opacity: 0.2;
     }
 
-    .cursor-glow {
-      box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
-    }
 
     footer {
       background-color: var(--secondary-color);
@@ -232,23 +283,45 @@
   <div class="container">
     <div class="sidebar">
       <section id="about">
-        <h2>About Me</h2>
-        <p>Your bio and description go here.</p>
+        <p>
+            I'm a junior at Case Western Reserve University and I have a keen interest in full-stack and front-end web development. Previously, I was on a pre-med track, but I recently switched to computer science as I discovered a better fit for my interests in building, impacting, and designing in the world of technology. My enthusiasm for front-end work grew when I embarked on developing my first project, ChefBot. 
+        </p>
+            <p>
+            These days, my primary objective is to further expand my knowledge and skills in the field, constantly seeking opportunities for growth and development. As the realm of web development evolves rapidly, I am committed to staying up-to-date with the latest technologies and best practices. With an insatiable curiosity, I eagerly embrace new challenges and enjoy pushing the boundaries of my abilities. 
+          </p>
+          <p>
+            When I'm not engrossed in coding, you can find me working out, exploring my culinary skills in the kitchen, or enjoying a cozy time cafe hopping with friends.
+          </p>
       </section>
 
       <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-          <a href="http://www.chefbot.org/" target="_blank">
-            <img src="chefbotlogo.png">
+        <div class="project-box">
+            <a href="http://www.chefbot.org/" target="_blank">
+          <div class="description">
             <h3>ChefBot</h3>
-            <p>Description of Project 1</p>
-          </a>
+            <p>
+              Chefbot is a chatbot designed to assist users in finding recipes based on their preferences and dietary restrictions.
+              It leverages natural language processing and machine learning techniques to understand user queries and provide relevant recipe suggestions.
+            </p>
+            <div class="more-description" style="display: none;">
+              <p>
+                Chefbot can engage in conversations with users, ask follow-up questions to gather more information about their recipe requirements,
+                and filter recipes based on specific criteria such as ingredients, cooking time, or dietary restrictions.
+                It interacts with users through a user-friendly interface, allowing them to input their recipe preferences and receive personalized recommendations.
+              </p>
+              <p>
+                The bot utilizes Edamam API to fetch recipe data, analyze the data, and present it to users in a user-friendly format.
+                It aims to make the recipe discovery process easier and more enjoyable for users, offering them a wide range of culinary options to explore.
+              </p>
+            </div>
+            <a href="#" class="read-more-link">Read More</a>
+          </div>
+        </a>
+          </div>
         </div>
-      </section>
-
+      </section>      
+      
       <section id="contact">
-        <h2>Contact Me</h2>
         <div class="contact-icons">
           <a href="https://www.linkedin.com/in/jennyzhang123/" target="_blank">
             <img src="linkedin.png" alt="LinkedIn">
@@ -259,25 +332,56 @@
         </div>
       </section>
     </div>
+  </div>
   <nav>
     <ul>
-      <li><a href="#about" class = "tab"> About</a></li>
-      <li><a href="#projects" class = "tab"> Projects</a></li>
-      <li><a href="#contact" class = "tab"> Contact</a></li>
+      <li><a href="#about" class="tab">ABOUT</a></li>
+      <li><a href="#projects" class="tab">PROJECTS</a></li>
+      <li><a href="#contact" class="tab">CONTACTS</a></li>
     </ul>
   </nav>
-  <div class="container">
-    <script src="scroll.js"></script>
-    <div id="about" class="sidebar-content">
-      <!-- About sidebar content -->
-    </div>
-    <div id="projects" class="sidebar-content">
-      <!-- Projects sidebar content -->
-    </div>
-    <div id="contact" class="sidebar-content">
-      <!-- Contact sidebar content -->
-    </div>
-  <div class="cursor"></div>
-  <script src="script.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".read-more-link").click(function(e) {
+        e.preventDefault();
+        var moreDescription = $(this).closest(".project-box").find(".more-description");
+        var buttonText = $(this).text();
+  
+        if (buttonText === "Read More") {
+          moreDescription.slideDown();
+          $(this).text("Show Less");
+        } else {
+          moreDescription.slideUp(function() {
+            $(this).closest(".project-box").find(".read-more-link").text("Read More");
+          });
+        }
+      });
+    });
+  </script>  
+     <div class="cursor"></div>
+     <script>
+     document.addEventListener("DOMContentLoaded", function() {
+    var cursorGlow = document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", function(e) {
+    var x = e.clientX;
+    var y = e.clientY;
+
+    var glowSize = 550; // Adjust this value to match the size of the glow element
+
+    cursorGlow.style.display = "block"; // show the glow
+    cursorGlow.style.left = x - glowSize / 2 + "px"; // center horizontally
+    cursorGlow.style.top = y - glowSize / 2 + "px"; // center vertically
+
+
+  });
+
+  document.addEventListener("mouseleave", function() {
+    cursorGlow.style.display = "none"; // hide the glow when leaving the document
+  });
+});
+     </script>
 </body>
 </html>
