@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     :root {
-      --primary-color: #dadce3;
+      --primary-color: rgba(252, 252, 252, 0.794);
       --secondary-color: #e6f1ff;
       --background-color: #0a192f;
     }
@@ -15,6 +15,8 @@
     body {
       background-color: var(--background-color);
       color: var(--secondary-color);
+      font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      letter-spacing: 0.2px;
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -68,13 +70,12 @@
         width: 30px;
         height: 2px; /* Adjust the height of the bar */
         background-color: var(--primary-color);
-        color: white;
         opacity: 0.5;
         transition: opacity 0.3s ease-in-out;
     }
 
     nav ul li a:hover:before {
-        color: #fff;
+        color: white;
         width: 50px;
         left: -60px;
         opacity: 1; /* Show the bar on hover */
@@ -168,7 +169,7 @@
 
     .project-box {
         position: relative;
-        color: var(--primary-color);
+        color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
         display: block;
         margin-bottom: 20px;
@@ -255,7 +256,7 @@
     svg{
     width: 10px;
     height: 15px;
-    transition:width 2s ease;
+    transition: width 2s ease;
     overflow: visible;
     transform: rotate(-45deg);
     }
@@ -268,18 +269,18 @@
     top: 0;
     left: 0;
     pointer-events: none;
-    width: 700px;
-    height: 700px;
-    background: rgb(243, 243, 240);
-    background: radial-gradient(circle, rgb(182, 191, 201) 0%,  #e9eaed00 70%);
+    width: 800px;
+    height: 800px;
+    filter: invert(0.2);
+    background: radial-gradient(circle, rgba(182, 191, 201, 0.5) 2%, rgba(233, 234, 237, 0) 70%);
     background-size: 100%;
     border-radius: 100%;
     position: absolute;
 	background-repeat: no-repeat;
 	background-position: center;
-    position: absolute;
-    opacity: 0.08;
+    opacity: 0.2;
     }
+
 
     footer {
       background-color: var(--secondary-color);
