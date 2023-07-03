@@ -246,8 +246,8 @@
     top: 0;
     left: 0;
     pointer-events: none;
-    width: 550px;
-    height: 550px;
+    width: 400px;
+    height: 400px;
     background: rgb(243, 243, 240);
     background: radial-gradient(circle, rgb(182, 191, 201) 0%,  #e9eaed00 70%);
     background-size: 100%;
@@ -256,21 +256,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
     position: absolute;
-    opacity: 0.2;
-    }
-
-    @media (min-width: 769px) {
-    /* Your CSS code here */
-    }
-
-    /* CSS rules for screens between 481px and 768px */
-    @media (min-width: 481px) and (max-width: 768px) {
-    /* Your CSS code here */
-    }
-
-    /* CSS rules for screens smaller than or equal to 480px */
-    @media (max-width: 480px) {
-    /* Your CSS code here */
+    opacity: 0.08;
     }
 
     footer {
@@ -382,7 +368,7 @@
     var x = e.clientX;
     var y = e.clientY;
 
-    var glowSize = 550; // Adjust this value to match the size of the glow element
+    var glowSize = 400; // Adjust this value to match the size of the glow element
 
     cursorGlow.style.display = "block"; // show the glow
     cursorGlow.style.left = x - glowSize / 2 + "px"; // center horizontally
