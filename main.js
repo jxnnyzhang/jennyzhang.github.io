@@ -89,7 +89,10 @@ function resizeCanvas() {
     spots = [];
 }
 
-window.addEventListener('resize', resizeCanvas);
+window.addEventListener('resize', function() {
+    resizeCanvas();
+    animate();
+});
 window.addEventListener('mouseout', function (){
     mouse.x = this.window.innerWidth/2;
     mouse.y = this.window.innerHeight/2;
