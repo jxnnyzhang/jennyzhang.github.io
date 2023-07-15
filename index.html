@@ -9,17 +9,63 @@
     :root {
       --primary-color: rgba(252, 252, 252, 0.794);
       --secondary-color: #e6f1ff;
-      --background-color: #0a192f;
+      --background-color: #010914;
     }
 
     body {
-      background-color: var(--background-color);
-      color: var(--secondary-color);
+      background-color: #020c1a;
       font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       letter-spacing: 0.2px;
+      position: relative;
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      width: 100%;
+      height: auto;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .a-title {
+        position: absolute;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: -webkit-xxx-large;
+        background-image: conic-gradient(#fbfeff, rgb(195, 202, 247));
+        pointer-events: none;
+        mix-blend-mode: difference;
+        filter: drop-shadow(2px 4px 6px black);
+        left: 700px;
+        top: 400px;
+        align-content: center;
+    }
+
+    .a-second-title {
+        position: absolute;
+        pointer-events: none;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: conic-gradient(#fbfeff, rgb(216, 219, 241));
+        letter-spacing: 1.125px;
+        font-size: -webkit-xxx-large;
+        font-weight: 900;
+        mix-blend-mode: color-dodge;
+        left: 600px;
+        top: 500px;
+        align-items: center;
+    }
+
+    .a-third-title {
+        position: absolute;
+        pointer-events: none;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1.3px rgb(255, 255, 255);
+        letter-spacing: 1.125px;
+        font-size: -webkit-xxx-large;
+        font-weight: 900;
+        mix-blend-mode: lighten;
+        left: 150px;
+        top: 600px;
+        align-content: center;
     }
 
     @font-face {
@@ -29,9 +75,9 @@
     }
 
     nav {
-        position: fixed;
-        top: 200px;
-        left: 50px;
+        position: absolute;
+        left: 350px;
+        bottom: 200px;
         width: 100%;
         z-index: 1;
     }
@@ -81,53 +127,16 @@
         opacity: 1; /* Show the bar on hover */
     }
 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }   
-
     .sidebar {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        text-align: left;
-        margin-right: -750px;
-        margin-top: -150px;
-        z-index: 2;
-    }
-
-    .main-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-left: -800px;
-        margin-top: 100px;
+        margin-right: -900px;
+        bottom: 300px;
     }
 
     #contact {
-    position: fixed;
-    bottom: 0;
-    margin-top: auto;
-    }
-
-    .main-content h1 {
-        color: white;
-    }
-
-    .main-content h2 {
-      font-weight: lighter;
-      font-size: 20px;
-      color: white;
-    }
-
-    .main-content p {
-      font-size: 16px;
-      color: #bab3b3;
+    position: absolute;
+    bottom: -200px;
+    left: 800px;
+    z-index: 1;
     }
 
     .sidebar h2 {
@@ -181,6 +190,10 @@
         text-decoration: none;
         box-shadow: 0 0 10px rgba(157, 159, 172, 0.2);
         transform:translateX(3px); /* Add this line */
+    }
+
+    .project-box:hover h3 {
+        color: #64ffda;
     }
 
     .project-box a {
@@ -264,24 +277,18 @@
     .project-box:hover svg {
         transform: rotate(-45deg) translate(5px, 2px);
     }
-        
-    .cursor {
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    width: 800px;
-    height: 800px;
-    filter: invert(0.2);
-    background: radial-gradient(circle, rgba(182, 191, 201, 0.5) 2%, rgba(233, 234, 237, 0) 70%);
-    background-size: 100%;
-    border-radius: 100%;
-    position: absolute;
-	background-repeat: no-repeat;
-	background-position: center;
-    opacity: 0.2;
+
+    #container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     }
-
-
+        
     footer {
       background-color: var(--secondary-color);
       color: var(--primary-color);
@@ -291,13 +298,14 @@
   </style>
 </head>
 <body>
+    <canvas id="canvas"></canvas>
   <header>
     <div class="container">
       <div class="main-content">
         <section id="home">
-          <h1>Jenny Zhang</h1>
-          <h2>Full-Stack Developer</h2>
-          <p>Designing, building, and maintaining user-friendly web applications.</p>
+          <h1 class='a-title'>Jenny Zhang</h1>
+          <h2 class='a-second-title'>Full-Stack Developer</h2>
+          <h3 class='a-third-title'>Designing, building, and maintaining user-friendly web applications</h3>
         </section>
       </div>
     </div>
@@ -375,6 +383,8 @@
     </ul>
   </nav>
 
+  <script src = "./main.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
@@ -392,30 +402,7 @@
           });
         }
       });
-    });
-  </script>  
-     <div class="cursor"></div>
-     <script>
-     document.addEventListener("DOMContentLoaded", function() {
-    var cursorGlow = document.querySelector(".cursor");
-
-    document.addEventListener("mousemove", function(e) {
-    var x = e.clientX;
-    var y = e.clientY;
-
-    var glowSize = 700; // Adjust this value to match the size of the glow element
-
-    cursorGlow.style.display = "block"; // show the glow
-    cursorGlow.style.left = x - glowSize / 2 + "px"; // center horizontally
-    cursorGlow.style.top = y - glowSize / 2 + "px"; // center vertically
-
-
-  });
-
-  document.addEventListener("mouseleave", function() {
-    cursorGlow.style.display = "none"; // hide the glow when leaving the document
-  });
-});
-     </script>
+    }); 
+  </Script>
 </body>
 </html>
