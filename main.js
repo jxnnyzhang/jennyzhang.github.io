@@ -1,9 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let spots = [];
+canvas.height = window.innerHeight * 2;
 let hue = 0;
+let spots = [];
 
 const mouse = {
     x: window.innerWidth / 2,
@@ -11,19 +11,22 @@ const mouse = {
 }
 
 function updateMousePosition(event) {
-    const canvasRect = canvas.getBoundingClientRect();
-    mouse.x = event.clientX - canvasRect.left - window.scrollX;
-    mouse.y = event.clientY - canvasRect.top - window.scrollY;
-    for (let i = 0; i < 3; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        spots.push(new Particle(x, y));
-    }
+    mouse.x = event.clientX + window.scrollX;
+    mouse.y = event.clientY + window.scrollY;
 }
 
 canvas.addEventListener('mousemove', function (event){
     updateMousePosition(event);
-    createParticle(mouse.x, mouse.y);
+    for (let i = 0; i < 3; i++) {
+        const x = mouse.x;
+        const y = mouse.y;
+    createParticle(x,y);
+    }
+});
+
+window.addEventListener('scroll', function() {
+    canvas.width = window.innerWidth + this.window.scrollX;
+    canvas.height = window.innerHeight + this.window.scrollY;
 });
 
 function createParticle(x, y) {
@@ -33,8 +36,8 @@ function createParticle(x, y) {
 
 class Particle {
     constructor(x,y) {
-        this.x = mouse.x;
-        this.y = mouse.y;
+        this.x = x;
+        this.y = y;
         this.size = Math.random() * 3 + 0.1;
         this.speedX = Math.random() * 2 - 1;
         this.speedY = Math.random() * 2 - 1;
@@ -43,6 +46,7 @@ class Particle {
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
+
         if (this.size > 0.1) this.size -= 0.03;
     }
     draw() {
@@ -52,7 +56,13 @@ class Particle {
     ctx.fill();
     }
 }
+
+function clearCanvas() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
 function handleParticle() {
+    clearCanvas();
     for (let i = 0; i < spots.length; i++) {
         spots[i].update();
         spots[i].draw();
