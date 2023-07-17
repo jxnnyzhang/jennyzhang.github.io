@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight * 2;
+canvas.height = document.body.scrollHeight;
 let hue = 0;
 let spots = [];
 
@@ -25,9 +25,9 @@ canvas.addEventListener('mousemove', function (event){
 });
 
 window.addEventListener('scroll', function() {
-    canvas.width = window.innerWidth + this.window.scrollX;
-    canvas.height = window.innerHeight + this.window.scrollY;
-});
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight + window.scrollY;
+  });
 
 function createParticle(x, y) {
     spots.push(new Particle(x, y));
@@ -57,12 +57,9 @@ class Particle {
     }
 }
 
-function clearCanvas() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-}
 
 function handleParticle() {
-    clearCanvas();
+    ctx.save();
     for (let i = 0; i < spots.length; i++) {
         spots[i].update();
         spots[i].draw();
@@ -84,6 +81,7 @@ function handleParticle() {
             i--;
         }
     }
+    ctx.restore();
 }
 function animate() {
     canvas.width = window.innerWidth;
