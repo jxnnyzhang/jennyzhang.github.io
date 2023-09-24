@@ -1,9 +1,10 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-canvas.height = document.body.scrollHeight;
+canvas.height = window.innerHeight;
 let hue = 0;
 let spots = [];
+
 
 const mouse = {
     x: window.innerWidth / 2,
@@ -11,26 +12,29 @@ const mouse = {
 }
 
 function updateMousePosition(event) {
-    mouse.x = event.clientX + window.scrollX;
-    mouse.y = event.clientY + window.scrollY;
+    mouse.x = event.pageX - canvas.getBoundingClientRect().left;
+    mouse.y = event.pageY - canvas.getBoundingClientRect().top;
 }
 
-canvas.addEventListener('mousemove', function (event){
+
+canvas.addEventListener('mousemove', function(event) {
     updateMousePosition(event);
     for (let i = 0; i < 3; i++) {
         const x = mouse.x;
         const y = mouse.y;
-    createParticle(x,y);
+        createParticle(x, y);
     }
 });
 
-window.addEventListener('scroll', function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight + window.scrollY;
-  });
 
 function createParticle(x, y) {
     spots.push(new Particle(x, y));
+    const particle = document.createElement('div');
+    particle.className = 'particle'; // Apply styles to this class
+    particle.style.position = 'fixed';
+    particle.style.top = y + 'px';
+    particle.style.left = x + 'px';
+    document.body.appendChild(particle);
 }
 
 
@@ -84,26 +88,27 @@ function handleParticle() {
     ctx.restore();
 }
 function animate() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     handleParticle();
     hue++;
     requestAnimationFrame(animate);
 }
 function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    spots = [];
+    canvas.height = Math.max(window.innerHeight + window.scrollY, document.body.scrollHeight);
 }
 
 window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.body.scrollHeight; 
     resizeCanvas();
+    spots = []; // Clear particles when resizing
     animate();
 });
-window.addEventListener('mouseout', function (){
-    mouse.x = this.window.innerWidth/2;
-    mouse.y = this.window.innerHeight/2;
-})
+
+canvas.addEventListener('mouseout', function(event) {
+    createParticle(mouse.x, mouse.y);
+});
+
 resizeCanvas();
 animate();

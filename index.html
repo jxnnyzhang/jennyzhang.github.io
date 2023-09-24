@@ -24,46 +24,43 @@
 
 
     .a-title {
-        position: absolute;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: -webkit-xxx-large;
-        background-image: conic-gradient(#fbfeff, rgb(195, 202, 247));
-        pointer-events: none;
-        mix-blend-mode: difference;
-        filter: drop-shadow(2px 4px 6px black);
-        left: 700px;
-        top: 400px;
-        align-content: center;
+      position: absolute;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: -webkit-xxx-large;
+      background-image: conic-gradient(#fbfeff, rgb(195, 202, 247));
+      pointer-events: none;
+      mix-blend-mode: difference;
+      filter: drop-shadow(2px 4px 6px black);
+      left: 700px;
+      top: 400px;
     }
 
     .a-second-title {
-        position: absolute;
-        pointer-events: none;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-image: conic-gradient(#fbfeff, rgb(216, 219, 241));
-        letter-spacing: 1.125px;
-        font-size: -webkit-xxx-large;
-        font-weight: 900;
-        mix-blend-mode: color-dodge;
-        left: 600px;
-        top: 500px;
-        align-items: center;
+      position: absolute;
+      pointer-events: none;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: conic-gradient(#fbfeff, rgb(216, 219, 241));
+      letter-spacing: 1.125px;
+      font-size: -webkit-xxx-large;
+      font-weight: 900;
+      mix-blend-mode: color-dodge;
+      left: 600px;
+      top: 500px;
     }
 
     .a-third-title {
-        position: absolute;
-        pointer-events: none;
-        -webkit-text-fill-color: transparent;
-        -webkit-text-stroke: 1.3px rgb(255, 255, 255);
-        letter-spacing: 1.125px;
-        font-size: -webkit-xxx-large;
-        font-weight: 900;
-        mix-blend-mode: lighten;
-        left: 150px;
-        top: 600px;
-        align-content: center;
+      position: absolute;
+      pointer-events: none;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.3px rgb(255, 255, 255);
+      letter-spacing: 1.125px;
+      font-size: -webkit-xxx-large;
+      font-weight: 900;
+      mix-blend-mode: lighten;
+      left: 150px;
+      top: 600px;
     }
 
     @font-face {
@@ -73,14 +70,10 @@
     }
 
 
-    .sidebar {
-        margin-right: -900px;
-        bottom: 300px;
-    }
-
     #contact {
     position: absolute;
-    bottom: -200px;
+    margin: 0 auto;
+    bottom: auto;
     left: 800px;
     z-index: 1;
     }
@@ -102,14 +95,6 @@
         margin: 0 auto;
         color: rgb(210, 199, 199);
         margin-left: 300px;
-    }
-
-    .sidebar .project {
-      margin-bottom: 40px;
-    }
-
-    .sidebar .contact {
-      padding-bottom: 20px;
     }
 
     .linkedin img {
@@ -218,7 +203,6 @@
     width: 10px;
     height: 15px;
     transition: width 2s ease;
-    overflow: visible;
     transform: rotate(-45deg);
     }
     
@@ -258,21 +242,19 @@
       </div>
     </div>
   </header>
+
   <div class="container">
     <div class="sidebar">
-      <section id="about">
-        <p>
-            I'm a junior at Case Western Reserve University and I have a keen interest in full-stack and front-end web development. Previously, I was on a pre-med track, but I recently switched to computer science as I discovered a better fit for my interests in building, impacting, and designing in the world of technology. My enthusiasm for front-end work grew when I embarked on developing my first project, ChefBot. 
-        </p>
-            <p>
-            These days, my primary objective is to further expand my knowledge and skills in the field, constantly seeking opportunities for growth and development. As the realm of web development evolves rapidly, I am committed to staying up-to-date with the latest technologies and best practices. With an insatiable curiosity, I eagerly embrace new challenges and enjoy pushing the boundaries of my abilities. 
-          </p>
-          <p>
-            When I'm not engrossed in coding, you can find me working out, exploring my culinary skills in the kitchen, or enjoying a cozy time cafe hopping with friends.
-          </p>
-      </section>
-</div>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
+
 
       <section id="projects">
         <div class="project-box">

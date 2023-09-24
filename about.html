@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    :root {
+      --primary-color: rgba(252, 252, 252, 0.794);
+      --secondary-color: #e6f1ff;
+      --background-color: #010914;
+    }
+
+    body {
+      background-color: #020c1a;
+      font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      letter-spacing: 0.2px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+        color: white;
+        margin: 30px 20px 20px 30px;
+        opacity: 1;
+    }
+
+    #about {
+        color: white;
+        opacity: 1;
+    }
+
+    img {
+        width: 35%;
+        height: 35%;
+        margin-right: 10px;
+        padding: 20px;
+    }
+
+    #about-content {
+        display: flex;
+        align-items: center; /* Vertically center align content */
+    }
+
+    .text-box {
+        background-color: rgba(249, 244, 244, 0.724); 
+        padding: 10px; 
+        margin-right: 20px;
+        border-radius: 8px;
+        max-width: calc(80% - 20px);
+        opacity: 0.8;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    <main>
+        <section id="about">
+            <div id="about-content">
+                <img src="me.jpg" alt="Me">
+                <div class="text-box">
+                    <h2>Introduction</h2>
+                    <p>
+                        I'm a junior at Case Western Reserve University with a passion for full-stack and front-end web development.
+                        I recently transitioned from a pre-med track to computer science due to my growing interest in technology.
+                    </p>
+
+                    <h2>Experience</h2>
+                    <p>
+                        My journey into web development began when I started working on my first project, ChefBot.
+                        Since then, I've been dedicated to expanding my knowledge and skills in this field.
+                        I'm always seeking opportunities for growth and staying up-to-date with the latest technologies and best practices.
+                    </p>
+
+                    <h2>Interests</h2>
+                    <p>
+                        When I'm not coding, you can find me staying active, experimenting in the kitchen, or enjoying quality time with friends at cafes.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- Add your footer content here -->
+        <p>&copy; 2023 Jenny Zhang</p>
+    </footer>
+</body>
+</html>
