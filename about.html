@@ -22,36 +22,95 @@
       overflow-x: hidden;
     }
 
+    .arrow-container {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        color: white;
+        display: flex;
+        right: 325px;
+        top: 450px;
+        transform: rotate(40deg);
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Style the navigation menu container */
+    nav {
+        position: absolute;
+        top: 10px; /* Adjust the top position as needed */
+        right: 30px; /* Adjust the right position as needed */
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline;
+        margin-left: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #007bff;
+    }
+
     h1 {
         color: white;
         margin: 30px 20px 20px 30px;
         opacity: 1;
     }
 
-    #about {
-        color: white;
-        opacity: 1;
-    }
-
-    img {
-        width: 35%;
-        height: 35%;
-        margin-right: 10px;
-        padding: 20px;
-    }
-
     #about-content {
         display: flex;
+        flex-direction: row; /* Arrange items horizontally */
         align-items: center; /* Vertically center align content */
+        margin: 100px 300px 0; 
+    }
+
+    .image-container {
+        width: 400px; /* Set the width of the container */
+        height: 400px; /* Set the height of the container (same as width for a perfect circle) */
+        margin-right: 20px;
+        padding: 20px;
+        margin: 100px 0 0; 
+        border-radius: 200%;
+        flex-shrink: 0; 
+        overflow: hidden; 
+     }
+
+    .image-container img {
+        width: 100%; /* Make the image cover the container */
+        height: auto; /* Maintain the image's aspect ratio */
+        object-fit: cover;
+    }
+
+
+    .flex-container {
+        display: flex;
+        align-items: center; /* Vertically center-align the items */
+        flex-direction: row;
     }
 
     .text-box {
         background-color: rgba(249, 244, 244, 0.724); 
-        padding: 10px; 
-        margin-right: 20px;
+        margin: 100px 10px 0; 
+        padding: 30px; 
         border-radius: 8px;
-        max-width: calc(80% - 20px);
+        margin-left: 30px;
+        max-width: calc(50% - 10px);
         opacity: 0.8;
+        color: white;
     }
     </style>
 </head>
@@ -61,9 +120,16 @@
     </header>
     <main>
         <section id="about">
-            <div id="about-content">
-                <img src="me.jpg" alt="Me">
+            <div id="about-content" class="flex-contatiner">
+                <div class="image-container">
+                <img src="me-modified.png" alt="Me">
+                </div>
                 <div class="text-box">
+                    <div class="arrow-container">
+                    <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 5 L30 40 L30 5 Z" fill="white"/>
+                    </svg>
+                </div>
                     <h2>Introduction</h2>
                     <p>
                         I'm a junior at Case Western Reserve University with a passion for full-stack and front-end web development.
@@ -85,6 +151,18 @@
             </div>
         </section>
     </main>
+    <div class="container">
+        <div class="sidebar">
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>    
     <script src = "./main.js"></script>
 </body>
 </html>

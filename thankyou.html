@@ -16,6 +16,33 @@
             text-align: center;
         }
 
+        nav {
+            position: absolute;
+            top: 30px; /* Adjust the top position as needed */
+            right: 30px; /* Adjust the right position as needed */
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #007bff;
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -40,5 +67,17 @@
             <p>Thank you for your message! I will try to get back to you shortly.</p>
         </main>
     </div>
+    <div class="container">
+        <div class="sidebar">
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>    
 </body>
 </html>

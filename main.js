@@ -26,12 +26,14 @@ canvas.addEventListener('mousemove', function(event) {
     }
 });
 
+// Find the cursor container element
+const cursorContainer = document.getElementById('cursor-container');
 
 function createParticle(x, y) {
     spots.push(new Particle(x, y));
     const particle = document.createElement('div');
     particle.className = 'particle'; // Apply styles to this class
-    particle.style.position = 'fixed';
+    particle.style.position = 'inherit';
     particle.style.top = y + 'px';
     particle.style.left = x + 'px';
     document.body.appendChild(particle);

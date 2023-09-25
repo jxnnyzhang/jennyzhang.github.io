@@ -23,15 +23,59 @@
       overflow-x: hidden;
     }
 
+    .project-dates {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 0.1px;
+    }
+
     h1 {
         color: white;
         margin: 30px 20px 20px 20px;
     }
+
+
+    nav {
+        position: absolute;
+        top: 10px; /* Adjust the top position as needed */
+        right: 30px; /* Adjust the right position as needed */
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+   }
+
+    li {
+        display: inline;
+        margin-left: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #007bff;
+    }  
+    
     .arrow-container {
         position: absolute;
-        margin-top: 3px;
+        margin-top: 20px;
         transform: translate(0, -40%);
         margin-left: 90px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .arrow-cont {
+        position: absolute;
+        margin-top: 20px;
+        transform: translate(0, -40%);
+        margin-left: 180px;
         width: 20px;
         height: 20px;
     }
@@ -43,9 +87,19 @@
 
     .project-header {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: left;
     }
-    
+
+    /* Add CSS for the cursor container */
+    #cursor-container {
+        position: inherit;
+        width: auto; /* Adjust the width as needed */
+        height: auto; /* Adjust the height as needed */
+        background-color: transparent; /* Adjust background color as needed */
+        pointer-events: none; /* Allow clicks to pass through the container */
+    }
+
     .project-box {
         position: relative;
         color: rgba(255, 255, 255, 0.85);
@@ -91,13 +145,45 @@
     <header>
         <h1>Projects</h1>
     </header>
+    <canvas id="canvas"></canvas>
     <main>
         <section id="projects">
             <div class="project-box">
+                <a href="https://github.com/cwru-xlab" target="_blank">
+                    <div id="cursor-container"></div>
+                    <div class="description">
+                        <div class="project-header">
+                            <h3>xLab Progressive</h3>
+                            <p class="project-dates">August 2022 - Present</p>
+                            <div class="arrow-cont">
+                                <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0 L10 10 L20 0 Z" fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p>
+                            xLab Progressive is a team consisting of 8 members who commit cross-functional work for the company, Progressive Insurance.
+                        </p>
+                        <div class="more-description" style="display: none;">
+                            <p>
+                                Our goal is to create and implement several features to help alleviate employee stress to improve overall performance within the company.
+                            </p>
+                            <p>
+                                I was tasked with implementing our calendar feature as a way for employees to see their iternary throughout the week so they can be prepare ahead of time for those particularily stressful days.
+                                I will be utilizing TypeScript and React Native to execute the calendar right onto the main profile page of the employees current dashboard. 
+                            </p>
+                        </div>
+                        <a href="#" class="read-more-link">Read More</a>
+                    </div>
+                </a>
+            </div>
+            <div class="project-box">
                 <a href="http://www.chefbot.org/" target="_blank">
+                    <div id="cursor-container"></div>
                     <div class="description">
                         <div class="project-header">
                             <h3>ChefBot</h3>
+                            <p class="project-dates">May 2022 - Present</p>
                             <div class="arrow-container">
                                 <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 0 L10 10 L20 0 Z" fill="white" />
@@ -123,10 +209,22 @@
                     </div>
                 </a>
             </div>            
-          </section>
-          
+        </section>      
     </main>
 
+    <div class="container">
+        <div class="sidebar">
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>   
+      <script src = "./main.js"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -146,6 +244,5 @@
             });
         });
     </script>
-    <script src = "./main.js"></script>
 </body>
 </html>
