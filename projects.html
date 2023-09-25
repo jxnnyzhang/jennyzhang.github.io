@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+    :root {
+      --primary-color: rgba(252, 252, 252, 0.794);
+      --secondary-color: #e6f1ff;
+      --background-color: #010914;
+    }
+
+    body {
+      background-color: #020c1a;
+      font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      letter-spacing: 0.2px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+        color: white;
+        margin: 30px 20px 20px 20px;
+    }
+    .arrow-container {
+        position: absolute;
+        margin-top: 3px;
+        transform: translate(0, -40%);
+        margin-left: 90px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .arrow {
+        transform: rotate(-135deg);
+        transition: transform 0.3s ease;
+    }
+
+    .project-header {
+        display: flex;
+        align-items: center;
+    }
+    
+    .project-box {
+        position: relative;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 20px;
+        padding: 20px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .project-box:hover {
+        padding: 20px;
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(157, 159, 172, 0.2);
+        transform:translateX(3px); /* Add this line */
+    }
+
+    .project-box:hover h3 {
+        color: #64ffda;
+    }
+
+    .project-box a {
+        text-decoration: none;
+        color: inherit;
+        pointer-events: auto;
+    }
+
+    .project-box:hover a {
+        color: inherit;
+    }
+    
+    .project-box:hover .arrow {
+        transform: translateX(5px) translateY(-5px) rotate(-135deg);
+    }  
+
+    .read-more-link {
+        font-weight: bold;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Projects</h1>
+    </header>
+    <main>
+        <section id="projects">
+            <div class="project-box">
+                <a href="http://www.chefbot.org/" target="_blank">
+                    <div class="description">
+                        <div class="project-header">
+                            <h3>ChefBot</h3>
+                            <div class="arrow-container">
+                                <svg class="arrow" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0 L10 10 L20 0 Z" fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p>
+                            ChefBot is a chatbot designed to assist users in finding recipes based on their preferences and dietary restrictions.
+                            It leverages natural language processing and machine learning techniques to understand user queries and provide relevant recipe suggestions.
+                        </p>
+                        <div class="more-description" style="display: none;">
+                            <p>
+                                ChefBot can engage in conversations with users, ask follow-up questions to gather more information about their recipe requirements,
+                                and filter recipes based on specific criteria such as ingredients, cooking time, or dietary restrictions.
+                                It interacts with users through a user-friendly interface, allowing them to input their recipe preferences and receive personalized recommendations.
+                            </p>
+                            <p>
+                                The bot utilizes Edamam API to fetch recipe data, analyze the data, and present it to users in a user-friendly format.
+                                It aims to make the recipe discovery process easier and more enjoyable for users, offering them a wide range of culinary options to explore.
+                            </p>
+                        </div>
+                        <a href="#" class="read-more-link">Read More</a>
+                    </div>
+                </a>
+            </div>            
+          </section>
+          
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".read-more-link").click(function (e) {
+                e.preventDefault();
+                var moreDescription = $(this).closest(".project-box").find(".more-description");
+                var buttonText = $(this).text();
+
+                if (buttonText === "Read More") {
+                    moreDescription.slideDown();
+                    $(this).text("Show Less");
+                } else {
+                    moreDescription.slideUp(function () {
+                        $(this).closest(".project-box").find(".read-more-link").text("Read More");
+                    });
+                }
+            });
+        });
+    </script>
+    <script src = "./main.js"></script>
+</body>
+</html>
