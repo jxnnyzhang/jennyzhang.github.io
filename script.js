@@ -10,19 +10,19 @@ const uri = "mongodb+srv://jxnnyzhang:oqxk3ELlWMft1ppd@portfoliojz.ojgvtv3.mongo
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  });
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 // Configure nodemailer to send emails
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: 'jxnnyzhang@gmail.com', // Your Gmail email address
-    pass: '0802Zhang', // Your Gmail password or an app password if enabled
+    user: 'jennyzhang564@gmail.com', // Your Gmail email address
+    pass: 'oabl xris vwoe vllg', // Your Gmail password or an app password if enabled
   },
 });
 
@@ -36,47 +36,47 @@ async function run() {
     const collection = client.db("mydb").collection("contacts");
 
     // Create a POST route to handle form submissions
-app.post('/submit', async (req, res) => {
-    const { name, email, message } = req.body;
-  
-    // Create a document to insert into the database
-    const submission = {
-      name,
-      email,
-      message,
-      timestamp: new Date(),
-    };
-  
-    // Insert the submission into the collection
-    const result = await collection.insertOne(submission);
-  
-    if (result.insertedCount === 1) {
-      console.log("Form submission saved to MongoDB");
-  
-      // Send an email with the form data
-      const mailOptions = {
-        from: 'your_email@gmail.com', // Your Gmail email address
-        to: 'jxnnyzhang@gmail.com', // Recipient's email address
-        subject: 'New Form Submission',
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    app.post('/submit', async (req, res) => {
+      const { name, email, message } = req.body;
+
+      // Create a document to insert into the database
+      const submission = {
+        name,
+        email,
+        message,
+        timestamp: new Date(),
       };
-  
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error("Failed to send email:", error);
-          res.status(500).send("Internal Server Error");
-        } else {
-          console.log("Email sent:", info.response);
-  
-          // Redirect to the "Thank You" page after successful submission
-          res.redirect("thankyou.html"); // Replace with the actual path to your "Thank You" page
-        }
-      });
-    } else {
-      console.error("Failed to save form submission to MongoDB");
-      res.status(500).send("Internal Server Error");
-    }
-  });
+
+      // Insert the submission into the collection
+      const result = await collection.insertOne(submission);
+
+      if (result.insertedCount === 1) {
+        console.log("Form submission saved to MongoDB");
+
+        // Send an email with the form data
+        const mailOptions = {
+          from: email, // Use the inputted email address as the "from" address
+          to: 'jennyzhang564@gmail.com', // Recipient's email address
+          subject: 'New Form Submission',
+          text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error("Failed to send email:", error);
+            res.status(500).send("Internal Server Error");
+          } else {
+            console.log("Email sent:", info.response);
+
+            // Redirect to the "Thank You" page after successful submission
+            res.redirect("thankyou.html"); // Replace with the actual path to your "Thank You" page
+          }
+        });
+      } else {
+        console.error("Failed to save form submission to MongoDB");
+        res.status(500).send("Internal Server Error");
+      }
+    });
 
     // Start the Express server
     const port = process.env.PORT || 3001;

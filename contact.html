@@ -8,7 +8,6 @@
     <style>
         body {
             background-color: #020c1a;
-            font-family: Arial, sans-serif;
             color: #e6f1ff;
             margin: 0;
             padding: 0;
@@ -41,9 +40,32 @@
             font-weight: bold;
         }
 
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Regular.ttf') format('truetype');
+            font-style: normal;
+        }
+
         input[type="text"],
         textarea {
-            width: 100%;
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="email"],
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="message"],
+        textarea {
+            width: 90%;
+            height: 100px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -68,7 +90,7 @@
         <header>
             <h1>Contact Me</h1>
         </header>
-        <form action="scrip.js" method="POST">
+        <form id="contactForm" action="/submit" method="POST">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -81,28 +103,6 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    <script>
-        document.getElementById("contactForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            // Collect form data
-            const formData = new FormData(this);
-
-            // Send data to server-side script (PHP or other)
-            fetch("submit_form.php", {
-                method: "POST",
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Handle the response from the server (e.g., show a success message)
-                    alert(data.message);
-                })
-                .catch(error => {
-                    // Handle any errors that occur during the fetch operation
-                    console.error("Error:", error);
-                });
-        });
-    </script>
+    <script src="script.js"></script>    
 </body>
 </html>
