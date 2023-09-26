@@ -6,6 +6,7 @@
     <title>About Me</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+
     :root {
       --primary-color: rgba(252, 252, 252, 0.794);
       --secondary-color: #e6f1ff;
@@ -20,21 +21,6 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-    }
-
-    .arrow-container {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        color: white;
-        display: flex;
-        right: 325px;
-        top: 450px;
-        transform: rotate(40deg);
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: opacity 0.3s ease-in-out;
     }
 
     /* Style the navigation menu container */
@@ -95,7 +81,6 @@
         object-fit: cover;
     }
 
-
     .flex-container {
         display: flex;
         align-items: center; /* Vertically center-align the items */
@@ -111,6 +96,44 @@
         max-width: calc(50% - 10px);
         opacity: 0.8;
         color: white;
+        position: relative; /* Position for arrows */
+    }
+
+    .arrow-container {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .arrows {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 50px; /* Increase arrow size */
+        position: relative; /* Add position relative */
+        top: 60px; /* Adjust this value to move the arrows down */
+        color: white;
+    }
+
+    .arrow {
+        cursor: pointer;
+    }
+
+    .arrow-container.right {
+        margin-left: 550px; 
+        margin-top: -3px;
+    }
+
+    .arrow-container.left {
+        margin-left: -55px;
+        margin-top: -3px;
     }
     </style>
 </head>
@@ -125,28 +148,31 @@
                 <img src="me-modified.png" alt="Me">
                 </div>
                 <div class="text-box">
-                    <div class="arrow-container">
-                    <svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 5 L30 40 L30 5 Z" fill="white"/>
-                    </svg>
+                    <div class="arrows">
+                    <div class="arrow-container left" onclick="prevSlide()">&#9664;</div>
+                    <div class="arrow-container right" onclick="nextSlide()">&#9654;</div>
                 </div>
-                    <h2>Introduction</h2>
-                    <p>
-                        I'm a junior at Case Western Reserve University with a passion for full-stack and front-end web development.
-                        I recently transitioned from a pre-med track to computer science due to my growing interest in technology.
-                    </p>
-
-                    <h2>Experience</h2>
-                    <p>
-                        My journey into web development began when I started working on my first project, ChefBot.
-                        Since then, I've been dedicated to expanding my knowledge and skills in this field.
-                        I'm always seeking opportunities for growth and staying up-to-date with the latest technologies and best practices.
-                    </p>
-
-                    <h2>Interests</h2>
-                    <p>
-                        When I'm not coding, you can find me staying active, experimenting in the kitchen, or enjoying quality time with friends at cafes.
-                    </p>
+                    <div class="slide">
+                        <h2>Introduction</h2>
+                        <p>
+                            I'm a junior at Case Western Reserve University with a passion for full-stack and front-end web development.
+                            I recently transitioned from a pre-med track to computer science due to my growing interest in technology.
+                        </p>
+                    </div>
+                    <div class="slide">
+                        <h2>Experience</h2>
+                        <p>
+                            My journey into web development began when I started working on my first project, ChefBot.
+                            Since then, I've been dedicated to expanding my knowledge and skills in this field.
+                            I'm always seeking opportunities for growth and staying up-to-date with the latest technologies and best practices.
+                        </p>
+                    </div>
+                    <div class="slide">
+                        <h2>Interests</h2>
+                        <p>
+                            When I'm not coding, you can find me staying active, experimenting in the kitchen, or enjoying quality time with friends at cafes.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -163,6 +189,58 @@
           </nav>
         </div>
       </div>    
-    <script src = "./main.js"></script>
+    <script src="./main.js"></script>
+    <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const leftArrow = document.querySelector('.arrow-container.left');
+    const rightArrow = document.querySelector('.arrow-container.right');
+
+    function showSlide(slideNumber) {
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+        slides[slideNumber].style.display = 'block';
+
+        // Hide left arrow on the first slide
+        if (slideNumber === 0) {
+            leftArrow.style.display = 'none';
+        } else {
+            leftArrow.style.display = 'block';
+        }
+
+        // Hide right arrow on the last slide
+        if (slideNumber === slides.length - 1) {
+            rightArrow.style.display = 'none';
+        } else {
+            rightArrow.style.display = 'block';
+        }
+    }
+
+    function nextSlide() {
+        if (currentSlide === 0) {
+            currentSlide = 1; // Go to "Experience" if coming from "Introduction"
+        } else if (currentSlide === 1) {
+            currentSlide = 2; // Go to "Interests" if coming from "Experience"
+        } else if (currentSlide === 2) {
+            currentSlide = 0; // Go to "Introduction" if coming from "Interests"
+        }
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        if (currentSlide === 0) {
+            currentSlide = 2; // Go to "Interests" if coming from "Introduction"
+        } else if (currentSlide === 1) {
+            currentSlide = 0; // Go to "Introduction" if coming from "Experience"
+        } else if (currentSlide === 2) {
+            currentSlide = 1; // Go to "Experience" if coming from "Interests"
+        }
+        showSlide(currentSlide);
+    }
+
+    // Initial slide
+    showSlide(currentSlide);
+    </script>
 </body>
 </html>

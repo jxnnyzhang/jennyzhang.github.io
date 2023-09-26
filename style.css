@@ -5,5 +5,5 @@
     width: 100%; /* Use width and height to cover the entire viewport */
     height: 100%;
     pointer-events: none;
-    z-index: 1000;
+    z-index: -1;
 }
