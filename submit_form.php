@@ -1,33 +1,36 @@
 <?php
-// Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
+require 'vendor/autoload.php';
 
-    // Create an email message
-    $subject = "New Form Submission";
-    $messageBody = "Name: $name\nEmail: $email\nMessage: $message";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    // Set the recipient email address
-    $to = "jennyzhang564@gmail.com"; // Replace with your email address
+// Create a new PHPMailer instance
+$mail = new PHPMailer(true);
 
-    // Set additional headers
-    $headers = "From: $email" . "\r\n" .
-               "Reply-To: $email" . "\r\n" .
-               "X-Mailer: PHP/" . phpversion();
+try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host = 'arn:aws:ses:us-east-2:804404266717:identity/jxnnyzhang@gmail.com'; // Set the Amazon SES server
+    $mail->SMTPAuth = true;
+    $mail->Username = 'AKIA3WSR3A3OUBL42N7I'; // Your SMTP username from AWS SES
+    $mail->Password = 'BDPBwpur+e+zslyT2k28TWWqnMtkDgBa3v0N4MjpZxBp'; // Your SMTP password from AWS SES
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587; // TLS only
 
-    // Attempt to send the email
-    if (mail($to, $subject, $messageBody, $headers)) {
-        // Email sent successfully
-        echo json_encode(array("message" => "Email sent successfully"));
-    } else {
-        // Email sending failed
-        echo json_encode(array("message" => "Email sending failed"));
-    }
-} else {
-    // Form was not submitted
-    echo json_encode(array("message" => "Form was not submitted"));
+    // Recipients
+    $mail->setFrom('your_verified_email@example.com', 'Mailer');
+    $mail->addAddress('jxnnyzhang@gmail.com', 'Jenny Zhang'); // Add a recipient
+
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 ?>
