@@ -11,10 +11,10 @@ $mail = new PHPMailer(true);
 try {
     // Server settings
     $mail->isSMTP();
-    $mail->Host = 'arn:aws:ses:us-east-2:804404266717:identity/jxnnyzhang@gmail.com'; // Set the Amazon SES server
+    $mail->Host = 'email-smtp.us-east-2.amazonaws.com'; // Set the Amazon SES server
     $mail->SMTPAuth = true;
-    $mail->Username = 'AKIA3WSR3A3OUBL42N7I'; // Your SMTP username from AWS SES
-    $mail->Password = 'BDPBwpur+e+zslyT2k28TWWqnMtkDgBa3v0N4MjpZxBp'; // Your SMTP password from AWS SES
+    $mail->Username = getenv('AKIA3WSR3A3OZFRVWWXT'); // Your SMTP username from AWS SES
+    $mail->Password = getenv('BMcs9Gz9XLOYcuG52eSbcRc4A1PGhL7ZEU2MEfbxwE4z'); // Your SMTP password from AWS SES
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587; // TLS only
 
